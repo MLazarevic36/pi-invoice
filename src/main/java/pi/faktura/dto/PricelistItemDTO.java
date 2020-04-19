@@ -1,33 +1,65 @@
 package pi.faktura.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import pi.faktura.model.Pricelist_item;
+
 
 import java.io.Serializable;
 
-@Getter
-@Setter
+
 @NoArgsConstructor
 public class PricelistItemDTO implements Serializable {
 
     private Long id;
     private Long price;
-    private GoodsDTO goods;
-    private PricelistDTO pricelist;
+    private GoodsDTO goodsDTO;
+    private PricelistDTO pricelistDTO;
     private boolean deleted;
 
-    public PricelistItemDTO(Long id, Long price, GoodsDTO goods, PricelistDTO pricelist, boolean deleted) {
+    public PricelistItemDTO(Long id, Long price, GoodsDTO goodsDTO, PricelistDTO pricelistDTO, boolean deleted) {
         this.id = id;
         this.price = price;
-        this.goods = goods;
-        this.pricelist = pricelist;
+        this.goodsDTO = goodsDTO;
+        this.pricelistDTO = pricelistDTO;
         this.deleted = deleted;
     }
 
-    public PricelistItemDTO(Pricelist_item p) {
-        this(p.getId(), p.getPrice(), new GoodsDTO(p.getGoods()), new PricelistDTO(p.getPricelist()), p.isDeleted());
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getPrice() {
+        return price;
+    }
+
+    public void setPrice(Long price) {
+        this.price = price;
+    }
+
+    public GoodsDTO getGoodsDTO() {
+        return goodsDTO;
+    }
+
+    public void setGoodsDTO(GoodsDTO goodsDTO) {
+        this.goodsDTO = goodsDTO;
+    }
+
+    public PricelistDTO getPricelistDTO() {
+        return pricelistDTO;
+    }
+
+    public void setPricelistDTO(PricelistDTO pricelistDTO) {
+        this.pricelistDTO = pricelistDTO;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
     }
 }

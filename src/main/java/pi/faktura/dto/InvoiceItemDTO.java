@@ -1,15 +1,9 @@
 package pi.faktura.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import pi.faktura.model.Invoice_item;
 
 import java.io.Serializable;
 
-@Getter
-@Setter
 @NoArgsConstructor
 public class InvoiceItemDTO implements Serializable {
 
@@ -26,9 +20,7 @@ public class InvoiceItemDTO implements Serializable {
     private GoodsDTO goods;
     private boolean deleted;
 
-    public InvoiceItemDTO(Long id, Long quantity, Long unit_price, Long rebate, Long base_for_vat,
-                          Long vat_percent, Long vat_amount, Long item_amount, String unit_of_measure,
-                          InvoiceDTO invoice, GoodsDTO goods, boolean deleted) {
+    public InvoiceItemDTO(Long id, Long quantity, Long unit_price, Long rebate, Long base_for_vat, Long vat_percent, Long vat_amount, Long item_amount, String unit_of_measure, InvoiceDTO invoice, GoodsDTO goods, boolean deleted) {
         this.id = id;
         this.quantity = quantity;
         this.unit_price = unit_price;
@@ -43,9 +35,99 @@ public class InvoiceItemDTO implements Serializable {
         this.deleted = deleted;
     }
 
-    public InvoiceItemDTO(Invoice_item i) {
-        this(i.getId(), i.getQuantity(), i.getUnit_price(), i.getRebate(), i.getBase_for_vat(), i.getVat_percent(),
-                i.getVat_amount(), i.getItem_amount(), i.getUnit_of_measure(), new InvoiceDTO(i.getInvoice()),
-                new GoodsDTO(i.getGoods()), i.isDeleted());
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Long quantity) {
+        this.quantity = quantity;
+    }
+
+    public Long getUnit_price() {
+        return unit_price;
+    }
+
+    public void setUnit_price(Long unit_price) {
+        this.unit_price = unit_price;
+    }
+
+    public Long getRebate() {
+        return rebate;
+    }
+
+    public void setRebate(Long rebate) {
+        this.rebate = rebate;
+    }
+
+    public Long getBase_for_vat() {
+        return base_for_vat;
+    }
+
+    public void setBase_for_vat(Long base_for_vat) {
+        this.base_for_vat = base_for_vat;
+    }
+
+    public Long getVat_percent() {
+        return vat_percent;
+    }
+
+    public void setVat_percent(Long vat_percent) {
+        this.vat_percent = vat_percent;
+    }
+
+    public Long getVat_amount() {
+        return vat_amount;
+    }
+
+    public void setVat_amount(Long vat_amount) {
+        this.vat_amount = vat_amount;
+    }
+
+    public Long getItem_amount() {
+        return item_amount;
+    }
+
+    public void setItem_amount(Long item_amount) {
+        this.item_amount = item_amount;
+    }
+
+    public String getUnit_of_measure() {
+        return unit_of_measure;
+    }
+
+    public void setUnit_of_measure(String unit_of_measure) {
+        this.unit_of_measure = unit_of_measure;
+    }
+
+    public InvoiceDTO getInvoice() {
+        return invoice;
+    }
+
+    public void setInvoice(InvoiceDTO invoice) {
+        this.invoice = invoice;
+    }
+
+    public GoodsDTO getGoods() {
+        return goods;
+    }
+
+    public void setGoods(GoodsDTO goods) {
+        this.goods = goods;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
     }
 }

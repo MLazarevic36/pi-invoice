@@ -1,16 +1,11 @@
 package pi.faktura.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import pi.faktura.model.Business_year;
 
 import java.io.Serializable;
 import java.util.Date;
 
-@Getter
-@Setter
+
 @NoArgsConstructor
 public class BusinessYearDTO implements Serializable {
 
@@ -30,10 +25,51 @@ public class BusinessYearDTO implements Serializable {
         this.finished = finished;
     }
 
-    public BusinessYearDTO(Business_year b) {
-        this(b.getId(), b.getYear(), b.getStart_date(), b.getEnd_date(), new CompanyDTO(b.getCompany()),
-                b.getFinished());
+    public Long getId() {
+        return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
 
+    public Integer getYear() {
+        return year;
+    }
+
+    public void setYear(Integer year) {
+        this.year = year;
+    }
+
+    public Date getStart_date() {
+        return start_date;
+    }
+
+    public void setStart_date(Date start_date) {
+        this.start_date = start_date;
+    }
+
+    public Date getEnd_date() {
+        return end_date;
+    }
+
+    public void setEnd_date(Date end_date) {
+        this.end_date = end_date;
+    }
+
+    public CompanyDTO getCompany() {
+        return company;
+    }
+
+    public void setCompany(CompanyDTO company) {
+        this.company = company;
+    }
+
+    public Boolean getFinished() {
+        return finished;
+    }
+
+    public void setFinished(Boolean finished) {
+        this.finished = finished;
+    }
 }

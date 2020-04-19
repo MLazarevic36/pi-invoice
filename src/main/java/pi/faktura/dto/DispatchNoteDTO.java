@@ -1,16 +1,10 @@
 package pi.faktura.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import pi.faktura.model.Dispatch_note;
-
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
-@Getter
-@Setter
 @NoArgsConstructor
 public class DispatchNoteDTO implements Serializable {
 
@@ -18,31 +12,123 @@ public class DispatchNoteDTO implements Serializable {
     private Long number;
     private Date date;
     private Date delivery_date;
-    private CarrierDTO carrier;
-    private BusinessPartnerDTO buyer;
-    private CompanyDTO company;
-    private InvoiceDTO invoice;
-    private UserDTO user;
+    private CarrierDTO carrierDTO;
+    private BusinessPartnerDTO buyerDTO;
+    private CompanyDTO companyDTO;
+    private InvoiceDTO invoiceDTO;
+    private UserDTO userDTO;
+    private List<DispatchNoteItemDTO> dispatch_note_itemDTOs;
     private boolean received_goods;
     private boolean deleted;
 
-    public DispatchNoteDTO(Long id, Long number, Date date, Date delivery_date, CarrierDTO carrier, BusinessPartnerDTO buyer, CompanyDTO company, InvoiceDTO invoice, UserDTO user, boolean received_goods, boolean deleted) {
+    public DispatchNoteDTO(Long id, Long number, Date date, Date delivery_date, CarrierDTO carrierDTO, BusinessPartnerDTO buyerDTO, CompanyDTO companyDTO, InvoiceDTO invoiceDTO, UserDTO userDTO, List<DispatchNoteItemDTO> dispatch_note_itemDTOs, boolean received_goods, boolean deleted) {
         this.id = id;
         this.number = number;
         this.date = date;
         this.delivery_date = delivery_date;
-        this.carrier = carrier;
-        this.buyer = buyer;
-        this.company = company;
-        this.invoice = invoice;
-        this.user = user;
+        this.carrierDTO = carrierDTO;
+        this.buyerDTO = buyerDTO;
+        this.companyDTO = companyDTO;
+        this.invoiceDTO = invoiceDTO;
+        this.userDTO = userDTO;
+        this.dispatch_note_itemDTOs = dispatch_note_itemDTOs;
         this.received_goods = received_goods;
         this.deleted = deleted;
     }
 
-    public DispatchNoteDTO(Dispatch_note d) {
-        this(d.getId(), d.getNumber(), d.getDate(), d.getDelivery_date(), new CarrierDTO(d.getCarrier()),
-                new BusinessPartnerDTO(d.getBuyer()), new CompanyDTO(d.getCompany()), new InvoiceDTO(d.getInvoice()),
-                new UserDTO(d.getUser()), d.isReceived_goods(), d.isDeleted());
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getNumber() {
+        return number;
+    }
+
+    public void setNumber(Long number) {
+        this.number = number;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public Date getDelivery_date() {
+        return delivery_date;
+    }
+
+    public void setDelivery_date(Date delivery_date) {
+        this.delivery_date = delivery_date;
+    }
+
+    public CarrierDTO getCarrierDTO() {
+        return carrierDTO;
+    }
+
+    public void setCarrierDTO(CarrierDTO carrierDTO) {
+        this.carrierDTO = carrierDTO;
+    }
+
+    public BusinessPartnerDTO getBuyerDTO() {
+        return buyerDTO;
+    }
+
+    public void setBuyerDTO(BusinessPartnerDTO buyerDTO) {
+        this.buyerDTO = buyerDTO;
+    }
+
+    public CompanyDTO getCompanyDTO() {
+        return companyDTO;
+    }
+
+    public void setCompanyDTO(CompanyDTO companyDTO) {
+        this.companyDTO = companyDTO;
+    }
+
+    public InvoiceDTO getInvoiceDTO() {
+        return invoiceDTO;
+    }
+
+    public void setInvoiceDTO(InvoiceDTO invoiceDTO) {
+        this.invoiceDTO = invoiceDTO;
+    }
+
+    public UserDTO getUserDTO() {
+        return userDTO;
+    }
+
+    public void setUserDTO(UserDTO userDTO) {
+        this.userDTO = userDTO;
+    }
+
+    public List<DispatchNoteItemDTO> getDispatch_note_itemDTOs() {
+        return dispatch_note_itemDTOs;
+    }
+
+    public void setDispatch_note_itemDTOs(List<DispatchNoteItemDTO> dispatch_note_itemDTOs) {
+        this.dispatch_note_itemDTOs = dispatch_note_itemDTOs;
+    }
+
+    public boolean isReceived_goods() {
+        return received_goods;
+    }
+
+    public void setReceived_goods(boolean received_goods) {
+        this.received_goods = received_goods;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
     }
 }

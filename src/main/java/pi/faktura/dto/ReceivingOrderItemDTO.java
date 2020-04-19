@@ -1,16 +1,13 @@
 package pi.faktura.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
+
+
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import pi.faktura.model.Receiving_order;
-import pi.faktura.model.Receiving_order_item;
+
+
 
 import java.io.Serializable;
 
-@Getter
-@Setter
 @NoArgsConstructor
 public class ReceivingOrderItemDTO implements Serializable {
 
@@ -22,8 +19,7 @@ public class ReceivingOrderItemDTO implements Serializable {
     private GoodsDTO goods;
     private boolean deleted;
 
-    public ReceivingOrderItemDTO(Long id, String name, Long quantity, String unit_of_measure,
-                                 ReceivingOrderDTO receiving_order, GoodsDTO goods, boolean deleted) {
+    public ReceivingOrderItemDTO(Long id, String name, Long quantity, String unit_of_measure, ReceivingOrderDTO receiving_order, GoodsDTO goods, boolean deleted) {
         this.id = id;
         this.name = name;
         this.quantity = quantity;
@@ -33,8 +29,59 @@ public class ReceivingOrderItemDTO implements Serializable {
         this.deleted = deleted;
     }
 
-    public ReceivingOrderItemDTO(Receiving_order_item r) {
-        this(r.getId(), r.getName(), r.getQuantity(), r.getUnit_of_measure(), new ReceivingOrderDTO(r.getReceiving_order()),
-                new GoodsDTO(r.getGoods()), r.isDeleted());
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Long getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Long quantity) {
+        this.quantity = quantity;
+    }
+
+    public String getUnit_of_measure() {
+        return unit_of_measure;
+    }
+
+    public void setUnit_of_measure(String unit_of_measure) {
+        this.unit_of_measure = unit_of_measure;
+    }
+
+    public ReceivingOrderDTO getReceiving_order() {
+        return receiving_order;
+    }
+
+    public void setReceiving_order(ReceivingOrderDTO receiving_order) {
+        this.receiving_order = receiving_order;
+    }
+
+    public GoodsDTO getGoods() {
+        return goods;
+    }
+
+    public void setGoods(GoodsDTO goods) {
+        this.goods = goods;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
     }
 }

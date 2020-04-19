@@ -1,16 +1,12 @@
 package pi.faktura.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import pi.faktura.model.Receiving_order;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
-@Getter
-@Setter
+
 @NoArgsConstructor
 public class ReceivingOrderDTO implements Serializable {
 
@@ -22,12 +18,11 @@ public class ReceivingOrderDTO implements Serializable {
     private InvoiceDTO invoice;
     private BusinessPartnerDTO buyer;
     private UserDTO user;
+    private List<ReceivingOrderDTO> receiving_order_itemDTOs;
     private boolean active;
     private boolean deleted;
 
-    public ReceivingOrderDTO(Long id, Long number, Date creation_date, Date delivery_date, CompanyDTO company,
-                             InvoiceDTO invoice, BusinessPartnerDTO buyer, UserDTO user, boolean active,
-                             boolean deleted) {
+    public ReceivingOrderDTO(Long id, Long number, Date creation_date, Date delivery_date, CompanyDTO company, InvoiceDTO invoice, BusinessPartnerDTO buyer, UserDTO user, List<ReceivingOrderDTO> receiving_order_itemDTOs, boolean active, boolean deleted) {
         this.id = id;
         this.number = number;
         this.creation_date = creation_date;
@@ -36,13 +31,96 @@ public class ReceivingOrderDTO implements Serializable {
         this.invoice = invoice;
         this.buyer = buyer;
         this.user = user;
+        this.receiving_order_itemDTOs = receiving_order_itemDTOs;
         this.active = active;
         this.deleted = deleted;
     }
 
-    public ReceivingOrderDTO(Receiving_order r) {
-        this(r.getId(), r.getNumber(), r.getCreation_date(), r.getDelivery_date(), new CompanyDTO(r.getCompany()),
-                new InvoiceDTO(r.getInvoice()), new BusinessPartnerDTO(r.getBuyer()), new UserDTO(r.getUser()),
-                r.isActive(), r.isDeleted());
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getNumber() {
+        return number;
+    }
+
+    public void setNumber(Long number) {
+        this.number = number;
+    }
+
+    public Date getCreation_date() {
+        return creation_date;
+    }
+
+    public void setCreation_date(Date creation_date) {
+        this.creation_date = creation_date;
+    }
+
+    public Date getDelivery_date() {
+        return delivery_date;
+    }
+
+    public void setDelivery_date(Date delivery_date) {
+        this.delivery_date = delivery_date;
+    }
+
+    public CompanyDTO getCompany() {
+        return company;
+    }
+
+    public void setCompany(CompanyDTO company) {
+        this.company = company;
+    }
+
+    public InvoiceDTO getInvoice() {
+        return invoice;
+    }
+
+    public void setInvoice(InvoiceDTO invoice) {
+        this.invoice = invoice;
+    }
+
+    public BusinessPartnerDTO getBuyer() {
+        return buyer;
+    }
+
+    public void setBuyer(BusinessPartnerDTO buyer) {
+        this.buyer = buyer;
+    }
+
+    public UserDTO getUser() {
+        return user;
+    }
+
+    public void setUser(UserDTO user) {
+        this.user = user;
+    }
+
+    public List<ReceivingOrderDTO> getReceiving_order_itemDTOs() {
+        return receiving_order_itemDTOs;
+    }
+
+    public void setReceiving_order_itemDTOs(List<ReceivingOrderDTO> receiving_order_itemDTOs) {
+        this.receiving_order_itemDTOs = receiving_order_itemDTOs;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
     }
 }

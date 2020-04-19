@@ -1,17 +1,11 @@
 package pi.faktura.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import pi.faktura.model.VAT;
-import pi.faktura.model.VAT_rate;
 
 import java.io.Serializable;
 import java.util.Date;
 
-@Getter
-@Setter
+
 @NoArgsConstructor
 public class VatRateDTO implements Serializable{
 
@@ -29,7 +23,43 @@ public class VatRateDTO implements Serializable{
         this.deleted = deleted;
     }
 
-    public VatRateDTO(VAT_rate v) {
-        this(v.getId(), v.getPercent(), v.getExpiration_date(), new VatDTO(v.getVat()), v.isDeleted());
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getPercent() {
+        return percent;
+    }
+
+    public void setPercent(Long percent) {
+        this.percent = percent;
+    }
+
+    public Date getExpiration_date() {
+        return expiration_date;
+    }
+
+    public void setExpiration_date(Date expiration_date) {
+        this.expiration_date = expiration_date;
+    }
+
+    public VatDTO getVat() {
+        return vat;
+    }
+
+    public void setVat(VatDTO vat) {
+        this.vat = vat;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
     }
 }
