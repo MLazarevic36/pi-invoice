@@ -1,9 +1,8 @@
 package pi.faktura.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
+
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -12,8 +11,6 @@ import java.util.List;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
-@Getter
-@Setter
 @NoArgsConstructor
 @Entity
 @Table(name = "dispatch_note")
@@ -63,4 +60,100 @@ public class Dispatch_note implements Serializable {
 
     @Column(name="deleted", columnDefinition="BOOLEAN DEFAULT FALSE")
     private boolean deleted;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getNumber() {
+        return number;
+    }
+
+    public void setNumber(Long number) {
+        this.number = number;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public Date getDelivery_date() {
+        return delivery_date;
+    }
+
+    public void setDelivery_date(Date delivery_date) {
+        this.delivery_date = delivery_date;
+    }
+
+    public List<Dispatch_note_item> getDispatch_note_items() {
+        return dispatch_note_items;
+    }
+
+    public void setDispatch_note_items(List<Dispatch_note_item> dispatch_note_items) {
+        this.dispatch_note_items = dispatch_note_items;
+    }
+
+    public Carrier getCarrier() {
+        return carrier;
+    }
+
+    public void setCarrier(Carrier carrier) {
+        this.carrier = carrier;
+    }
+
+    public Business_partner getBuyer() {
+        return buyer;
+    }
+
+    public void setBuyer(Business_partner buyer) {
+        this.buyer = buyer;
+    }
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
+    }
+
+    public Invoice getInvoice() {
+        return invoice;
+    }
+
+    public void setInvoice(Invoice invoice) {
+        this.invoice = invoice;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public boolean isReceived_goods() {
+        return received_goods;
+    }
+
+    public void setReceived_goods(boolean received_goods) {
+        this.received_goods = received_goods;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
 }

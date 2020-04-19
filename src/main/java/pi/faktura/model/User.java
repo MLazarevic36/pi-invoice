@@ -12,8 +12,6 @@ import java.util.Set;
 import static javax.persistence.CascadeType.ALL;
 import static javax.persistence.FetchType.LAZY;
 
-@Getter
-@Setter
 @NoArgsConstructor
 @Entity
 @Table(name = "users")
@@ -49,4 +47,76 @@ public class User implements Serializable {
 
     @Column(name="deleted", columnDefinition="BOOLEAN DEFAULT FALSE")
     private boolean deleted;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
+    }
+
+    public Set<Receiving_order> getReceiving_orders() {
+        return receiving_orders;
+    }
+
+    public void setReceiving_orders(Set<Receiving_order> receiving_orders) {
+        this.receiving_orders = receiving_orders;
+    }
+
+    public Set<Invoice> getInvoices() {
+        return invoices;
+    }
+
+    public void setInvoices(Set<Invoice> invoices) {
+        this.invoices = invoices;
+    }
+
+    public Set<Dispatch_note> getDispatch_notes() {
+        return dispatch_notes;
+    }
+
+    public void setDispatch_notes(Set<Dispatch_note> dispatch_notes) {
+        this.dispatch_notes = dispatch_notes;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
 }

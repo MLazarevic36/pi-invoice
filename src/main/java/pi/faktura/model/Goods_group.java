@@ -14,8 +14,6 @@ import static javax.persistence.CascadeType.ALL;
 import static javax.persistence.FetchType.LAZY;
 import static javax.persistence.GenerationType.IDENTITY;
 
-@Getter
-@Setter
 @NoArgsConstructor
 @Entity
 @Table(name = "goods_groups")
@@ -24,7 +22,7 @@ public class Goods_group implements Serializable {
     @Id
     @GeneratedValue(strategy=IDENTITY)
     @Column(name="goods_group_id", unique=true, nullable=false)
-    private Integer id;
+    private Long id;
 
     @Column(name="name", nullable=false, length = 50)
     private String name;
@@ -45,4 +43,60 @@ public class Goods_group implements Serializable {
 
     @Column(name="deleted", columnDefinition="BOOLEAN DEFAULT FALSE")
     private boolean deleted;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Date getCreation_date() {
+        return creation_date;
+    }
+
+    public void setCreation_date(Date creation_date) {
+        this.creation_date = creation_date;
+    }
+
+    public VAT getVat() {
+        return vat;
+    }
+
+    public void setVat(VAT vat) {
+        this.vat = vat;
+    }
+
+    public Set<Goods> getGoods() {
+        return goods;
+    }
+
+    public void setGoods(Set<Goods> goods) {
+        this.goods = goods;
+    }
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
 }

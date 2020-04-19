@@ -10,8 +10,6 @@ import java.util.Date;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
-@Getter
-@Setter
 @NoArgsConstructor
 @Entity
 @Table(name = "vat_rates")
@@ -35,4 +33,43 @@ public class VAT_rate implements Serializable {
     @Column(name="deleted", columnDefinition="BOOLEAN DEFAULT FALSE")
     private boolean deleted;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getPercent() {
+        return percent;
+    }
+
+    public void setPercent(Long percent) {
+        this.percent = percent;
+    }
+
+    public Date getExpiration_date() {
+        return expiration_date;
+    }
+
+    public void setExpiration_date(Date expiration_date) {
+        this.expiration_date = expiration_date;
+    }
+
+    public VAT getVat() {
+        return vat;
+    }
+
+    public void setVat(VAT vat) {
+        this.vat = vat;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
 }

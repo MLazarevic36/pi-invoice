@@ -13,8 +13,6 @@ import static javax.persistence.CascadeType.ALL;
 import static javax.persistence.FetchType.LAZY;
 import static javax.persistence.GenerationType.IDENTITY;
 
-@Getter
-@Setter
 @NoArgsConstructor
 @Entity
 @Table(name = "locations")
@@ -39,4 +37,52 @@ public class Location implements Serializable {
 
     @Column(name="deleted", columnDefinition="BOOLEAN DEFAULT FALSE")
     private boolean deleted;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public Long getZip_code() {
+        return zip_code;
+    }
+
+    public void setZip_code(Long zip_code) {
+        this.zip_code = zip_code;
+    }
+
+    public Set<Company> getCompanies() {
+        return companies;
+    }
+
+    public void setCompanies(Set<Company> companies) {
+        this.companies = companies;
+    }
+
+    public Set<Business_partner> getBusiness_partners() {
+        return business_partners;
+    }
+
+    public void setBusiness_partners(Set<Business_partner> business_partners) {
+        this.business_partners = business_partners;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
 }

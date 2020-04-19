@@ -12,8 +12,6 @@ import java.util.List;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
-@Getter
-@Setter
 @NoArgsConstructor
 @Entity
 @Table(name = "receiving_orders")
@@ -60,4 +58,92 @@ public class Receiving_order implements Serializable {
 
     @Column(name="deleted", columnDefinition="BOOLEAN DEFAULT FALSE")
     private boolean deleted;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getNumber() {
+        return number;
+    }
+
+    public void setNumber(Long number) {
+        this.number = number;
+    }
+
+    public Date getCreation_date() {
+        return creation_date;
+    }
+
+    public void setCreation_date(Date creation_date) {
+        this.creation_date = creation_date;
+    }
+
+    public Date getDelivery_date() {
+        return delivery_date;
+    }
+
+    public void setDelivery_date(Date delivery_date) {
+        this.delivery_date = delivery_date;
+    }
+
+    public List<Receiving_order_item> getReceiving_order_items() {
+        return receiving_order_items;
+    }
+
+    public void setReceiving_order_items(List<Receiving_order_item> receiving_order_items) {
+        this.receiving_order_items = receiving_order_items;
+    }
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
+    }
+
+    public Invoice getInvoice() {
+        return invoice;
+    }
+
+    public void setInvoice(Invoice invoice) {
+        this.invoice = invoice;
+    }
+
+    public Business_partner getBuyer() {
+        return buyer;
+    }
+
+    public void setBuyer(Business_partner buyer) {
+        this.buyer = buyer;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
 }

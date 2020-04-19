@@ -19,8 +19,6 @@ import javax.persistence.Table;
 import static javax.persistence.CascadeType.ALL;
 import static javax.persistence.FetchType.LAZY;
 
-@Getter
-@Setter
 @NoArgsConstructor
 @Entity
 @Table(name = "carriers")
@@ -40,4 +38,35 @@ public class Carrier implements Serializable {
     @Column(name="deleted", columnDefinition="BOOLEAN DEFAULT FALSE")
     private Boolean deleted;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Set<Dispatch_note> getDispatch_notes() {
+        return dispatch_notes;
+    }
+
+    public void setDispatch_notes(Set<Dispatch_note> dispatch_notes) {
+        this.dispatch_notes = dispatch_notes;
+    }
+
+    public Boolean getDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(Boolean deleted) {
+        this.deleted = deleted;
+    }
 }

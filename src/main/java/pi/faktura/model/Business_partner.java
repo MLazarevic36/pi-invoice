@@ -11,8 +11,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-@Getter
-@Setter
 @NoArgsConstructor
 @Entity
 @Table(name = "business_partner")
@@ -58,4 +56,100 @@ public class Business_partner implements Serializable {
 
     @Column(name="deleted", columnDefinition="BOOLEAN DEFAULT FALSE")
     private Boolean deleted;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Date getCreation_date() {
+        return creation_date;
+    }
+
+    public void setCreation_date(Date creation_date) {
+        this.creation_date = creation_date;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public Long getTax_id() {
+        return tax_id;
+    }
+
+    public void setTax_id(Long tax_id) {
+        this.tax_id = tax_id;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
+    }
+
+    public Set<Dispatch_note> getDispatch_notes() {
+        return dispatch_notes;
+    }
+
+    public void setDispatch_notes(Set<Dispatch_note> dispatch_notes) {
+        this.dispatch_notes = dispatch_notes;
+    }
+
+    public List<Receiving_order> getReceiving_orders() {
+        return receiving_orders;
+    }
+
+    public void setReceiving_orders(List<Receiving_order> receiving_orders) {
+        this.receiving_orders = receiving_orders;
+    }
+
+    public List<Invoice> getInvoices() {
+        return invoices;
+    }
+
+    public void setInvoices(List<Invoice> invoices) {
+        this.invoices = invoices;
+    }
+
+    public Business_partner_type getBusiness_partner_type() {
+        return business_partner_type;
+    }
+
+    public void setBusiness_partner_type(Business_partner_type business_partner_type) {
+        this.business_partner_type = business_partner_type;
+    }
+
+    public Boolean getDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(Boolean deleted) {
+        this.deleted = deleted;
+    }
 }
