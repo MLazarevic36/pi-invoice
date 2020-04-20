@@ -1,12 +1,9 @@
 package pi.faktura.dto;
 
-import lombok.NoArgsConstructor;
-
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-@NoArgsConstructor
 public class LocationDTO implements Serializable {
 
     private Long id;
@@ -15,6 +12,9 @@ public class LocationDTO implements Serializable {
     private Set<CompanyDTO> companyDTOs = new HashSet<>();
     private Set<BusinessPartnerDTO> business_partnerDTOs = new HashSet<>();
     private boolean deleted;
+
+    public LocationDTO() {
+    }
 
     public LocationDTO(Long id, String city, Long zip_code, Set<CompanyDTO> companyDTOs, Set<BusinessPartnerDTO> business_partnerDTOs, boolean deleted) {
         this.id = id;

@@ -1,6 +1,6 @@
 package pi.faktura.dto;
 
-import lombok.NoArgsConstructor;
+
 import pi.faktura.model.Business_partner_type;
 
 import java.io.Serializable;
@@ -9,8 +9,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-
-@NoArgsConstructor
 public class BusinessPartnerDTO implements Serializable {
 
     private Long id;
@@ -25,6 +23,9 @@ public class BusinessPartnerDTO implements Serializable {
     private List<ReceivingOrderDTO> receiving_orders;
     private List<InvoiceDTO> invoices;
     private Boolean deleted;
+
+    public BusinessPartnerDTO() {
+    }
 
     public BusinessPartnerDTO(Long id, String name, Date creation_date, String address, Long tax_id, LocationDTO location, CompanyDTO company, Business_partner_type business_partner_type, Set<DispatchNoteDTO> dispatch_notesDTO, List<ReceivingOrderDTO> receiving_orders, List<InvoiceDTO> invoices, Boolean deleted) {
         this.id = id;

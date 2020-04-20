@@ -1,11 +1,9 @@
 package pi.faktura.dto;
-import lombok.NoArgsConstructor;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-@NoArgsConstructor
 public class CompanyDTO implements Serializable {
 
     private Long id;
@@ -42,6 +40,9 @@ public class CompanyDTO implements Serializable {
         this.receiving_orderDTOs = receiving_orderDTOs;
         this.userDTOs = userDTOs;
         this.deleted = deleted;
+    }
+
+    public CompanyDTO() {
     }
 
     public Long getId() {

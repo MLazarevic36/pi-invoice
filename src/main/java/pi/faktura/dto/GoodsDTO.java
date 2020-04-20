@@ -1,15 +1,10 @@
 package pi.faktura.dto;
 
-
-import lombok.NoArgsConstructor;
-
-
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-@NoArgsConstructor
 public class GoodsDTO implements Serializable {
 
     private Long id;
@@ -19,6 +14,9 @@ public class GoodsDTO implements Serializable {
     private Set<PricelistItemDTO> pricelist_itemDTOs = new HashSet<>();
     private List<InvoiceItemDTO> invoice_itemDTOs;
     private boolean deleted;
+
+    public GoodsDTO() {
+    }
 
     public GoodsDTO(Long id, String name, String unit_of_measure, GoodsGroupDTO goods_groupDTO, Set<PricelistItemDTO> pricelist_itemDTOs, List<InvoiceItemDTO> invoice_itemDTOs, boolean deleted) {
         this.id = id;

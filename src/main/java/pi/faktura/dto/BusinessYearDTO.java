@@ -1,12 +1,11 @@
 package pi.faktura.dto;
 
-import lombok.NoArgsConstructor;
+
 
 import java.io.Serializable;
 import java.util.Date;
 
 
-@NoArgsConstructor
 public class BusinessYearDTO implements Serializable {
 
     private Long id;
@@ -15,6 +14,9 @@ public class BusinessYearDTO implements Serializable {
     private Date end_date;
     private CompanyDTO company;
     private Boolean finished;
+
+    public BusinessYearDTO() {
+    }
 
     public BusinessYearDTO(Long id, Integer year, Date start_date, Date end_date, CompanyDTO company, Boolean finished) {
         this.id = id;

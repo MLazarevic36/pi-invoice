@@ -1,12 +1,8 @@
 package pi.faktura.dto;
 
-import lombok.NoArgsConstructor;
-
 import java.io.Serializable;
 import java.util.Date;
 
-
-@NoArgsConstructor
 public class VatRateDTO implements Serializable{
 
     private Long id;
@@ -14,6 +10,9 @@ public class VatRateDTO implements Serializable{
     private Date expiration_date;
     private VatDTO vat;
     private boolean deleted;
+
+    public VatRateDTO() {
+    }
 
     public VatRateDTO(Long id, Long percent, Date expiration_date, VatDTO vat, boolean deleted) {
         this.id = id;

@@ -1,16 +1,11 @@
 package pi.faktura.dto;
 
-import lombok.NoArgsConstructor;
-
-import pi.faktura.model.Pricelist;
-
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
 
-@NoArgsConstructor
 public class PricelistDTO implements Serializable {
 
     private Long id;
@@ -21,6 +16,9 @@ public class PricelistDTO implements Serializable {
     private CompanyDTO company;
     private Set<PricelistItemDTO> pricelist_itemDTOs = new HashSet<>();
     private boolean deleted;
+
+    public PricelistDTO() {
+    }
 
     public PricelistDTO(Long id, Long serial_number, Date expiration_date, Date creation_date, boolean active, CompanyDTO company, Set<PricelistItemDTO> pricelist_itemDTOs, boolean deleted) {
         this.id = id;

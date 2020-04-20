@@ -1,13 +1,11 @@
 package pi.faktura.dto;
 
-import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-@NoArgsConstructor
 public class GoodsGroupDTO implements Serializable {
 
     private Long id;
@@ -17,6 +15,9 @@ public class GoodsGroupDTO implements Serializable {
     private CompanyDTO companyDTO;
     private Set<GoodsDTO> goodsDTOs = new HashSet<>();
     private boolean deleted;
+
+    public GoodsGroupDTO() {
+    }
 
     public GoodsGroupDTO(Long id, String name, Date creation_date, VatDTO vat, CompanyDTO companyDTO, Set<GoodsDTO> goodsDTOs, boolean deleted) {
         this.id = id;

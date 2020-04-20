@@ -1,19 +1,19 @@
 package pi.faktura.dto;
 
-import lombok.NoArgsConstructor;
-
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
 
-@NoArgsConstructor
 public class CarrierDTO implements Serializable {
 
     private Long id;
     private String name;
     private Set<DispatchNoteDTO> dispatch_notes = new HashSet<>();
     private Boolean deleted;
+
+    public CarrierDTO() {
+    }
 
     public CarrierDTO(Long id, String name, Set<DispatchNoteDTO> dispatch_notes, Boolean deleted) {
         this.id = id;

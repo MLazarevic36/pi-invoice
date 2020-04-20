@@ -1,11 +1,9 @@
 package pi.faktura.dto;
 
-import lombok.NoArgsConstructor;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-@NoArgsConstructor
 public class DispatchNoteDTO implements Serializable {
 
     private Long id;
@@ -20,6 +18,9 @@ public class DispatchNoteDTO implements Serializable {
     private List<DispatchNoteItemDTO> dispatch_note_itemDTOs;
     private boolean received_goods;
     private boolean deleted;
+
+    public DispatchNoteDTO() {
+    }
 
     public DispatchNoteDTO(Long id, Long number, Date date, Date delivery_date, CarrierDTO carrierDTO, BusinessPartnerDTO buyerDTO, CompanyDTO companyDTO, InvoiceDTO invoiceDTO, UserDTO userDTO, List<DispatchNoteItemDTO> dispatch_note_itemDTOs, boolean received_goods, boolean deleted) {
         this.id = id;

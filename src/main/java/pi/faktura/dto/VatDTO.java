@@ -1,12 +1,9 @@
 package pi.faktura.dto;
 
-import lombok.NoArgsConstructor;
-
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-@NoArgsConstructor
 public class VatDTO implements Serializable {
 
     private Long id;
@@ -14,6 +11,9 @@ public class VatDTO implements Serializable {
     private Set<VatRateDTO> ratesDTOs = new HashSet<>();
     private Set<GoodsGroupDTO> groupDTOs = new HashSet<>();
     private boolean deleted;
+
+    public VatDTO() {
+    }
 
     public VatDTO(Long id, String name, Set<VatRateDTO> ratesDTOs, Set<GoodsGroupDTO> groupDTOs, boolean deleted) {
         this.id = id;

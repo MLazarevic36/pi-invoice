@@ -1,10 +1,7 @@
 package pi.faktura.dto;
 
-import lombok.NoArgsConstructor;
-
 import java.io.Serializable;
 
-@NoArgsConstructor
 public class InvoiceItemDTO implements Serializable {
 
     private Long id;
@@ -19,6 +16,9 @@ public class InvoiceItemDTO implements Serializable {
     private InvoiceDTO invoice;
     private GoodsDTO goods;
     private boolean deleted;
+
+    public InvoiceItemDTO() {
+    }
 
     public InvoiceItemDTO(Long id, Long quantity, Long unit_price, Long rebate, Long base_for_vat, Long vat_percent, Long vat_amount, Long item_amount, String unit_of_measure, InvoiceDTO invoice, GoodsDTO goods, boolean deleted) {
         this.id = id;

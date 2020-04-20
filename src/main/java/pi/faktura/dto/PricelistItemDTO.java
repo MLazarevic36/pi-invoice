@@ -1,12 +1,7 @@
 package pi.faktura.dto;
 
-import lombok.NoArgsConstructor;
-
-
 import java.io.Serializable;
 
-
-@NoArgsConstructor
 public class PricelistItemDTO implements Serializable {
 
     private Long id;
@@ -14,6 +9,9 @@ public class PricelistItemDTO implements Serializable {
     private GoodsDTO goodsDTO;
     private PricelistDTO pricelistDTO;
     private boolean deleted;
+
+    public PricelistItemDTO() {
+    }
 
     public PricelistItemDTO(Long id, Long price, GoodsDTO goodsDTO, PricelistDTO pricelistDTO, boolean deleted) {
         this.id = id;

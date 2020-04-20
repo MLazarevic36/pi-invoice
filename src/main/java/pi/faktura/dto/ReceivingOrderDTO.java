@@ -1,13 +1,9 @@
 package pi.faktura.dto;
 
-import lombok.NoArgsConstructor;
-
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-
-@NoArgsConstructor
 public class ReceivingOrderDTO implements Serializable {
 
     private Long id;
@@ -18,11 +14,14 @@ public class ReceivingOrderDTO implements Serializable {
     private InvoiceDTO invoice;
     private BusinessPartnerDTO buyer;
     private UserDTO user;
-    private List<ReceivingOrderDTO> receiving_order_itemDTOs;
+    private List<ReceivingOrderItemDTO> receiving_order_itemDTOs;
     private boolean active;
     private boolean deleted;
 
-    public ReceivingOrderDTO(Long id, Long number, Date creation_date, Date delivery_date, CompanyDTO company, InvoiceDTO invoice, BusinessPartnerDTO buyer, UserDTO user, List<ReceivingOrderDTO> receiving_order_itemDTOs, boolean active, boolean deleted) {
+    public ReceivingOrderDTO() {
+    }
+
+    public ReceivingOrderDTO(Long id, Long number, Date creation_date, Date delivery_date, CompanyDTO company, InvoiceDTO invoice, BusinessPartnerDTO buyer, UserDTO user, List<ReceivingOrderItemDTO> receiving_order_itemDTOs, boolean active, boolean deleted) {
         this.id = id;
         this.number = number;
         this.creation_date = creation_date;
@@ -100,11 +99,11 @@ public class ReceivingOrderDTO implements Serializable {
         this.user = user;
     }
 
-    public List<ReceivingOrderDTO> getReceiving_order_itemDTOs() {
+    public List<ReceivingOrderItemDTO> getReceiving_order_itemDTOs() {
         return receiving_order_itemDTOs;
     }
 
-    public void setReceiving_order_itemDTOs(List<ReceivingOrderDTO> receiving_order_itemDTOs) {
+    public void setReceiving_order_itemDTOs(List<ReceivingOrderItemDTO> receiving_order_itemDTOs) {
         this.receiving_order_itemDTOs = receiving_order_itemDTOs;
     }
 
