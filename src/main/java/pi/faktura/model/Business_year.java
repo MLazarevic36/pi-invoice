@@ -8,7 +8,6 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
-@NoArgsConstructor
 @Entity
 @Table(name = "business_year")
 public class Business_year implements Serializable {
@@ -33,6 +32,17 @@ public class Business_year implements Serializable {
 
     @Column(name="finished", columnDefinition="BOOLEAN DEFAULT FALSE")
     private Boolean finished;
+
+    public Business_year() {
+    }
+
+    public Business_year(Integer year, Date start_date, Date end_date, Company company, Boolean finished) {
+        this.year = year;
+        this.start_date = start_date;
+        this.end_date = end_date;
+        this.company = company;
+        this.finished = finished;
+    }
 
     public Long getId() {
         return id;

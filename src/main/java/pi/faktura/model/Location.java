@@ -1,5 +1,6 @@
 package pi.faktura.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,7 +14,6 @@ import static javax.persistence.CascadeType.ALL;
 import static javax.persistence.FetchType.LAZY;
 import static javax.persistence.GenerationType.IDENTITY;
 
-@NoArgsConstructor
 @Entity
 @Table(name = "locations")
 public class Location implements Serializable {
@@ -29,14 +29,27 @@ public class Location implements Serializable {
     @Column(name="zip_code", unique=true, nullable=false, length = 20)
     private Long zip_code;
 
+    @JsonBackReference
     @OneToMany(cascade = { ALL }, fetch = LAZY, mappedBy = "location")
     private Set<Company> companies = new HashSet<Company>();
 
+    @JsonBackReference
     @OneToMany(cascade = { ALL }, fetch = LAZY, mappedBy = "location")
     private Set<Business_partner> business_partners = new HashSet<Business_partner>();
 
     @Column(name="deleted", columnDefinition="BOOLEAN DEFAULT FALSE")
     private boolean deleted;
+
+    public Location() {
+    }
+
+    public Location(String city, Long zip_code, Set<Company> companies, Set<Business_partner> business_partners, boolean deleted) {
+        this.city = city;
+        this.zip_code = zip_code;
+        this.companies = companies;
+        this.business_partners = business_partners;
+        this.deleted = deleted;
+    }
 
     public Long getId() {
         return id;

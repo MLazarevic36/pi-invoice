@@ -1,6 +1,8 @@
 package pi.faktura.mapper;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 import pi.faktura.dto.GoodsGroupDTO;
 import pi.faktura.model.Goods_group;
@@ -10,76 +12,30 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Component
-public class GoodsGroupMapper implements Mapper<Goods_group, GoodsGroupDTO> {
+public class GoodsGroupMapper {
 
     @Autowired
-    VatMapper vatMapper;
+    private ModelMapper modelMapper;
 
-    @Autowired
-    CompanyMapper companyMapper;
 
-    @Autowired
-    GoodsMapper goodsMapper;
-
-    @Override
-    public GoodsGroupDTO toDTO(Goods_group entity) {
-
-        GoodsGroupDTO goodsGroupDTO = new GoodsGroupDTO();
-        goodsGroupDTO.setId(entity.getId());
-        goodsGroupDTO.setName(entity.getName());
-        goodsGroupDTO.setCreation_date(entity.getCreation_date());
-        goodsGroupDTO.setVat(vatMapper.toDTO(entity.getVat()));
-        goodsGroupDTO.setCompanyDTO(companyMapper.toDTO(entity.getCompany()));
-        goodsGroupDTO.setGoodsDTOs(goodsMapper.toDTO(entity.getGoods()));
-        goodsGroupDTO.setDeleted(entity.isDeleted());
-
+    private GoodsGroupDTO convertToDto(Goods_group goods_group) {
+        GoodsGroupDTO goodsGroupDTO = modelMapper.map(goods_group, GoodsGroupDTO.class);
         return goodsGroupDTO;
     }
 
-    @Override
-    public Goods_group toEntity(GoodsGroupDTO goodsGroupDTO) {
+    public  Set<GoodsGroupDTO> convertToDtos(Page<Goods_group> goods_groupPage) {
+        return goods_groupPage.stream().map(goods_group -> convertToDto(goods_group)).collect(Collectors.toSet());
+    }
 
-        Goods_group goods_group = new Goods_group();
-
-        goods_group.setName(goodsGroupDTO.getName());
-        goods_group.setCreation_date(goodsGroupDTO.getCreation_date());
-        goods_group.setVat(vatMapper.toEntity(goodsGroupDTO.getVat()));
-        goods_group.setCompany(companyMapper.toEntity(goodsGroupDTO.getCompanyDTO()));
-        goods_group.setGoods(goodsMapper.toEntity(goodsGroupDTO.getGoodsDTOs()));
-        goods_group.setDeleted(goodsGroupDTO.isDeleted());
-
+    private Goods_group convertToEntity(GoodsGroupDTO goodsGroupDTO) {
+        Goods_group goods_group = modelMapper.map(goodsGroupDTO, Goods_group.class);
         return goods_group;
     }
 
-    public Goods_group toEntityWithId (GoodsGroupDTO goodsGroupDTO) {
-
-        Goods_group goods_group = new Goods_group();
-
-        goods_group.setId(goodsGroupDTO.getId());
-        goods_group.setName(goodsGroupDTO.getName());
-        goods_group.setCreation_date(goodsGroupDTO.getCreation_date());
-        goods_group.setVat(vatMapper.toEntity(goodsGroupDTO.getVat()));
-        goods_group.setCompany(companyMapper.toEntity(goodsGroupDTO.getCompanyDTO()));
-        goods_group.setGoods(goodsMapper.toEntity(goodsGroupDTO.getGoodsDTOs()));
-        goods_group.setDeleted(goodsGroupDTO.isDeleted());
-
-        return goods_group;
-    }
-
-
-    @Override
-    public Set<GoodsGroupDTO> toDTO(Collection<Goods_group> entities) {
-        return entities
-                .stream()
-                .map(goods_group -> toDTO(goods_group))
-                .collect(Collectors.toSet());
-    }
-
-    @Override
-    public Set<Goods_group> toEntity(Collection<GoodsGroupDTO> goodsGroupDTOS) {
+    public Set<Goods_group> convertToEntities(Collection<GoodsGroupDTO> goodsGroupDTOS) {
         return goodsGroupDTOS
                 .stream()
-                .map(goodsGroupDTO -> toEntity(goodsGroupDTO))
+                .map(goodsGroupDTO -> convertToEntity(goodsGroupDTO))
                 .collect(Collectors.toSet());
     }
 }

@@ -1,5 +1,7 @@
 package pi.faktura.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,7 +13,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-@NoArgsConstructor
 @Entity
 @Table(name = "business_partner")
 public class Business_partner implements Serializable {
@@ -33,10 +34,12 @@ public class Business_partner implements Serializable {
     @Column(name="tax_id", length = 20)
     private Long tax_id;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name="location_id", referencedColumnName = "location_id")
     private Location location;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name="company_id", referencedColumnName = "company_id")
     private Company company;
@@ -56,6 +59,23 @@ public class Business_partner implements Serializable {
 
     @Column(name="deleted", columnDefinition="BOOLEAN DEFAULT FALSE")
     private Boolean deleted;
+
+    public Business_partner() {
+    }
+
+    public Business_partner(String name, Date creation_date, String address, Long tax_id, Location location, Company company, Set<Dispatch_note> dispatch_notes, List<Receiving_order> receiving_orders, List<Invoice> invoices, Business_partner_type business_partner_type, Boolean deleted) {
+        this.name = name;
+        this.creation_date = creation_date;
+        this.address = address;
+        this.tax_id = tax_id;
+        this.location = location;
+        this.company = company;
+        this.dispatch_notes = dispatch_notes;
+        this.receiving_orders = receiving_orders;
+        this.invoices = invoices;
+        this.business_partner_type = business_partner_type;
+        this.deleted = deleted;
+    }
 
     public Long getId() {
         return id;

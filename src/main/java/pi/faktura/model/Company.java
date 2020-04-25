@@ -1,5 +1,7 @@
 package pi.faktura.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,7 +16,7 @@ import static javax.persistence.CascadeType.ALL;
 import static javax.persistence.FetchType.LAZY;
 import static javax.persistence.GenerationType.IDENTITY;
 
-@NoArgsConstructor
+
 @Entity
 @Table(name = "companies")
 public class Company implements Serializable {
@@ -39,6 +41,7 @@ public class Company implements Serializable {
     @Column(name="tin", unique=true, nullable=false, length = 20)
     private Long tax_identification_number;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "location_id", referencedColumnName = "location_id")
     private Location location;
@@ -49,6 +52,7 @@ public class Company implements Serializable {
     @OneToMany(cascade = { ALL }, fetch = LAZY, mappedBy = "company")
     private Set<Goods_group> goods_groups = new HashSet<Goods_group>();
 
+    @JsonManagedReference
     @OneToMany(cascade = { ALL }, fetch = LAZY, mappedBy = "company")
     private Set<Business_partner> business_partners = new HashSet<Business_partner>();
 
@@ -69,6 +73,27 @@ public class Company implements Serializable {
 
     @Column(name="deleted", columnDefinition="BOOLEAN DEFAULT FALSE")
     private boolean deleted;
+
+    public Company() {
+    }
+
+    public Company(String name, String address, String email, String phone, Long tax_identification_number, Location location, Set<Pricelist> pricelists, Set<Goods_group> goods_groups, Set<Business_partner> business_partners, Set<Business_year> business_year, List<Invoice> invoices, List<Dispatch_note> dispatch_notes, List<Receiving_order> receiving_orders, Set<User> users, boolean deleted) {
+        this.name = name;
+        this.address = address;
+        this.email = email;
+        this.phone = phone;
+        this.tax_identification_number = tax_identification_number;
+        this.location = location;
+        this.pricelists = pricelists;
+        this.goods_groups = goods_groups;
+        this.business_partners = business_partners;
+        this.business_year = business_year;
+        this.invoices = invoices;
+        this.dispatch_notes = dispatch_notes;
+        this.receiving_orders = receiving_orders;
+        this.users = users;
+        this.deleted = deleted;
+    }
 
     public Long getId() {
         return id;

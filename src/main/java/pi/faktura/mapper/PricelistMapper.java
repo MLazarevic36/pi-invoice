@@ -1,7 +1,9 @@
 package pi.faktura.mapper;
 
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 import pi.faktura.dto.PricelistDTO;
 import pi.faktura.model.Pricelist;
@@ -11,58 +13,30 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Component
-public class PricelistMapper implements Mapper<Pricelist, PricelistDTO> {
+public class PricelistMapper {
 
     @Autowired
-    CompanyMapper companyMapper;
+    private ModelMapper modelMapper;
 
-    @Autowired
-    PricelistItemMapper pricelistItemMapper;
 
-    @Override
-    public PricelistDTO toDTO(Pricelist entity) {
-
-        PricelistDTO pricelistDTO = new PricelistDTO();
-        pricelistDTO.setId(entity.getId());
-        pricelistDTO.setSerial_number(entity.getSerial_number());
-        pricelistDTO.setExpiration_date(entity.getExpiration_date());
-        pricelistDTO.setCreation_date(entity.getCreation_date());
-        pricelistDTO.setActive(entity.isActive());
-        pricelistDTO.setCompany(companyMapper.toDTO(entity.getCompany()));
-        pricelistDTO.setPricelist_itemDTOs(pricelistItemMapper.toDTO(entity.getPricelist_items()));
-        pricelistDTO.setDeleted(entity.isDeleted());
-
+    private PricelistDTO convertToDto(Pricelist pricelist) {
+        PricelistDTO pricelistDTO = modelMapper.map(pricelist, PricelistDTO.class);
         return pricelistDTO;
     }
 
-    @Override
-    public Pricelist toEntity(PricelistDTO pricelistDTO) {
+    public  Set<PricelistDTO> convertToDtos(Page<Pricelist> pricelistPage) {
+        return pricelistPage.stream().map(pricelist -> convertToDto(pricelist)).collect(Collectors.toSet());
+    }
 
-        Pricelist pricelist = new Pricelist();
-        pricelist.setSerial_number(pricelistDTO.getSerial_number());
-        pricelist.setExpiration_date(pricelistDTO.getExpiration_date());
-        pricelist.setCreation_date(pricelistDTO.getCreation_date());
-        pricelist.setActive(pricelistDTO.isActive());
-        pricelist.setCompany(companyMapper.toEntity(pricelistDTO.getCompany()));
-        pricelist.setPricelist_items(pricelistItemMapper.toEntity(pricelistDTO.getPricelist_itemDTOs()));
-        pricelist.setDeleted(pricelistDTO.isDeleted());
-
+    private Pricelist convertToEntity(PricelistDTO pricelistDTO) {
+        Pricelist pricelist = modelMapper.map(pricelistDTO, Pricelist.class);
         return pricelist;
     }
 
-    @Override
-    public Set<PricelistDTO> toDTO(Collection<Pricelist> entities) {
-        return entities
-                .stream()
-                .map(pricelist -> toDTO(pricelist))
-                .collect(Collectors.toSet());
-    }
-
-    @Override
-    public Set<Pricelist> toEntity(Collection<PricelistDTO> pricelistDTOS) {
+    public Set<Pricelist> convertToEntities(Collection<PricelistDTO> pricelistDTOS) {
         return pricelistDTOS
                 .stream()
-                .map(pricelistDTO -> toEntity(pricelistDTO))
+                .map(pricelistDTO -> convertToEntity(pricelistDTO))
                 .collect(Collectors.toSet());
     }
 }
