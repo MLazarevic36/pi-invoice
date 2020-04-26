@@ -18,7 +18,7 @@ public class CompanyMapper {
     @Autowired
     private ModelMapper modelMapper;
 
-    private CompanyDTO convertToDto(Company company) {
+    public CompanyDTO convertToDto(Company company) {
         CompanyDTO companyDTO = modelMapper.map(company, CompanyDTO.class);
         return companyDTO;
     }
@@ -27,7 +27,7 @@ public class CompanyMapper {
         return companyPage.stream().map(company -> convertToDto(company)).collect(Collectors.toSet());
     }
 
-    private Company convertToEntity(CompanyDTO companyDTO) {
+    public Company convertToEntity(CompanyDTO companyDTO) {
         Company company = modelMapper.map(companyDTO, Company.class);
         return company;
     }

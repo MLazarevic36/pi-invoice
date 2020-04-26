@@ -18,7 +18,7 @@ public class LocationMapper {
     private ModelMapper modelMapper;
 
 
-    private LocationDTO convertToDto(Location location) {
+    public LocationDTO convertToDto(Location location) {
         LocationDTO locationDTO = modelMapper.map(location, LocationDTO.class);
         return locationDTO;
     }
@@ -27,7 +27,7 @@ public class LocationMapper {
         return locationPage.stream().map(location -> convertToDto(location)).collect(Collectors.toSet());
     }
 
-    private Location convertToEntity(LocationDTO locationDTO) {
+    public Location convertToEntity(LocationDTO locationDTO) {
         Location location = modelMapper.map(locationDTO, Location.class);
         return location;
     }

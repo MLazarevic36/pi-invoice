@@ -19,7 +19,7 @@ public class ReceivingOrderItemMapper  {
     private ModelMapper modelMapper;
 
 
-    private ReceivingOrderItemDTO convertToDto(Receiving_order_item receiving_order_item) {
+    public ReceivingOrderItemDTO convertToDto(Receiving_order_item receiving_order_item) {
         ReceivingOrderItemDTO receivingOrderItemDTO = modelMapper.map(receiving_order_item, ReceivingOrderItemDTO.class);
         return receivingOrderItemDTO;
     }
@@ -28,7 +28,7 @@ public class ReceivingOrderItemMapper  {
         return receivingOrderItemPage.stream().map(receivingOrderItem -> convertToDto(receivingOrderItem)).collect(Collectors.toSet());
     }
 
-    private Receiving_order_item convertToEntity(ReceivingOrderItemDTO receivingOrderItemDTO) {
+    public Receiving_order_item convertToEntity(ReceivingOrderItemDTO receivingOrderItemDTO) {
         Receiving_order_item receiving_order_item = modelMapper.map(receivingOrderItemDTO, Receiving_order_item.class);
         return receiving_order_item;
     }

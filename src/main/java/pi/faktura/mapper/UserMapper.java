@@ -18,7 +18,7 @@ public class UserMapper {
     private ModelMapper modelMapper;
 
 
-    private UserDTO convertToDto(User user) {
+    public UserDTO convertToDto(User user) {
         UserDTO userDTO = modelMapper.map(user, UserDTO.class);
         return userDTO;
     }
@@ -27,7 +27,7 @@ public class UserMapper {
         return userPage.stream().map(user -> convertToDto(user)).collect(Collectors.toSet());
     }
 
-    private User convertToEntity(UserDTO userDTO) {
+    public User convertToEntity(UserDTO userDTO) {
         User user = modelMapper.map(userDTO, User.class);
         return user;
     }

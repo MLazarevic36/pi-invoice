@@ -18,7 +18,7 @@ public class DispatchNoteMapper {
     @Autowired
     private ModelMapper modelMapper;
 
-    private DispatchNoteDTO convertToDto(Dispatch_note dispatch_note) {
+    public DispatchNoteDTO convertToDto(Dispatch_note dispatch_note) {
         DispatchNoteDTO dispatchNoteDTO = modelMapper.map(dispatch_note, DispatchNoteDTO.class);
         return dispatchNoteDTO;
     }
@@ -27,7 +27,7 @@ public class DispatchNoteMapper {
         return dispatch_notePage.stream().map(dispatch_note -> convertToDto(dispatch_note)).collect(Collectors.toSet());
     }
 
-    private Dispatch_note convertToEntity(DispatchNoteDTO dispatchNoteDTO) {
+    public Dispatch_note convertToEntity(DispatchNoteDTO dispatchNoteDTO) {
         Dispatch_note dispatch_note = modelMapper.map(dispatchNoteDTO, Dispatch_note.class);
         return dispatch_note;
     }

@@ -18,7 +18,7 @@ public class GoodsMapper  {
     private ModelMapper modelMapper;
 
 
-    private GoodsDTO convertToDto(Goods goods) {
+    public GoodsDTO convertToDto(Goods goods) {
         GoodsDTO goodsDTO = modelMapper.map(goods, GoodsDTO.class);
         return goodsDTO;
     }
@@ -27,7 +27,7 @@ public class GoodsMapper  {
         return goodsPage.stream().map(goods -> convertToDto(goods)).collect(Collectors.toSet());
     }
 
-    private Goods convertToEntity(GoodsDTO goodsDTO) {
+    public Goods convertToEntity(GoodsDTO goodsDTO) {
         Goods goods = modelMapper.map(goodsDTO, Goods.class);
         return goods;
     }

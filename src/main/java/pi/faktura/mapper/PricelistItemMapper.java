@@ -19,7 +19,7 @@ public class PricelistItemMapper {
     private ModelMapper modelMapper;
 
 
-    private PricelistItemDTO convertToDto(Pricelist_item pricelist_item) {
+    public PricelistItemDTO convertToDto(Pricelist_item pricelist_item) {
         PricelistItemDTO pricelistItemDTO = modelMapper.map(pricelist_item, PricelistItemDTO.class);
         return pricelistItemDTO;
     }
@@ -28,7 +28,7 @@ public class PricelistItemMapper {
         return pricelist_itemPage.stream().map(pricelist_item -> convertToDto(pricelist_item)).collect(Collectors.toSet());
     }
 
-    private Pricelist_item convertToEntity(PricelistItemDTO pricelistItemDTO) {
+    public Pricelist_item convertToEntity(PricelistItemDTO pricelistItemDTO) {
         Pricelist_item pricelist_item = modelMapper.map(pricelistItemDTO, Pricelist_item.class);
         return pricelist_item;
     }

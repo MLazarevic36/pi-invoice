@@ -18,7 +18,7 @@ public class VatRateMapper {
     private ModelMapper modelMapper;
 
 
-    private VatRateDTO convertToDto(VAT_rate vat_rate) {
+    public VatRateDTO convertToDto(VAT_rate vat_rate) {
         VatRateDTO vatRateDTO = modelMapper.map(vat_rate, VatRateDTO.class);
         return vatRateDTO;
     }
@@ -27,7 +27,7 @@ public class VatRateMapper {
         return vatRatePage.stream().map(vat_rate -> convertToDto(vat_rate)).collect(Collectors.toSet());
     }
 
-    private VAT_rate convertToEntity(VatRateDTO vatRateDTO) {
+    public VAT_rate convertToEntity(VatRateDTO vatRateDTO) {
         VAT_rate vat_rate = modelMapper.map(vatRateDTO, VAT_rate.class);
         return vat_rate;
     }

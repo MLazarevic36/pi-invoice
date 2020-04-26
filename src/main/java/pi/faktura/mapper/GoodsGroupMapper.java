@@ -18,7 +18,7 @@ public class GoodsGroupMapper {
     private ModelMapper modelMapper;
 
 
-    private GoodsGroupDTO convertToDto(Goods_group goods_group) {
+    public GoodsGroupDTO convertToDto(Goods_group goods_group) {
         GoodsGroupDTO goodsGroupDTO = modelMapper.map(goods_group, GoodsGroupDTO.class);
         return goodsGroupDTO;
     }
@@ -27,7 +27,7 @@ public class GoodsGroupMapper {
         return goods_groupPage.stream().map(goods_group -> convertToDto(goods_group)).collect(Collectors.toSet());
     }
 
-    private Goods_group convertToEntity(GoodsGroupDTO goodsGroupDTO) {
+    public Goods_group convertToEntity(GoodsGroupDTO goodsGroupDTO) {
         Goods_group goods_group = modelMapper.map(goodsGroupDTO, Goods_group.class);
         return goods_group;
     }

@@ -19,7 +19,7 @@ public class InvoiceItemMapper  {
     private ModelMapper modelMapper;
 
 
-    private InvoiceItemDTO convertToDto(Invoice_item invoice_item) {
+    public InvoiceItemDTO convertToDto(Invoice_item invoice_item) {
         InvoiceItemDTO invoiceItemDTO = modelMapper.map(invoice_item, InvoiceItemDTO.class);
         return invoiceItemDTO;
     }
@@ -28,7 +28,7 @@ public class InvoiceItemMapper  {
         return invoice_itemsPage.stream().map(invoice_item -> convertToDto(invoice_item)).collect(Collectors.toSet());
     }
 
-    private Invoice_item convertToEntity(InvoiceItemDTO invoiceItemDTO) {
+    public Invoice_item convertToEntity(InvoiceItemDTO invoiceItemDTO) {
         Invoice_item invoice_item = modelMapper.map(invoiceItemDTO, Invoice_item.class);
         return invoice_item;
     }

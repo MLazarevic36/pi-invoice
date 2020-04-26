@@ -18,7 +18,7 @@ public class BusinessYearMapper  {
     private ModelMapper modelMapper;
 
 
-    private BusinessYearDTO convertToDto(Business_year business_year) {
+    public BusinessYearDTO convertToDto(Business_year business_year) {
         BusinessYearDTO businessYearDTO = modelMapper.map(business_year, BusinessYearDTO.class);
         return businessYearDTO;
     }
@@ -27,7 +27,7 @@ public class BusinessYearMapper  {
         return business_yearPage.stream().map(business_year -> convertToDto(business_year)).collect(Collectors.toSet());
     }
 
-    private Business_year convertToEntity(BusinessYearDTO businessYearDTO) {
+    public Business_year convertToEntity(BusinessYearDTO businessYearDTO) {
         Business_year business_year = modelMapper.map(businessYearDTO, Business_year.class);
         return business_year;
     }

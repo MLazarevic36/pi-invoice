@@ -19,7 +19,7 @@ public class BusinessPartnerMapper  {
     private ModelMapper modelMapper;
 
 
-    private BusinessPartnerDTO convertToDto(Business_partner business_partner) {
+    public BusinessPartnerDTO convertToDto(Business_partner business_partner) {
         BusinessPartnerDTO businessPartnerDTO = modelMapper.map(business_partner, BusinessPartnerDTO.class);
         return businessPartnerDTO;
     }
@@ -28,7 +28,7 @@ public class BusinessPartnerMapper  {
         return business_partnerPage.stream().map(business_partner -> convertToDto(business_partner)).collect(Collectors.toSet());
     }
 
-    private Business_partner convertToEntity(BusinessPartnerDTO businessPartnerDTO) {
+    public Business_partner convertToEntity(BusinessPartnerDTO businessPartnerDTO) {
         Business_partner business_partner = modelMapper.map(businessPartnerDTO, Business_partner.class);
         return business_partner;
     }

@@ -20,7 +20,7 @@ public class CarrierMapper {
     private ModelMapper modelMapper;
 
 
-    private CarrierDTO convertToDto(Carrier carrier) {
+    public CarrierDTO convertToDto(Carrier carrier) {
         CarrierDTO carrierDTO = modelMapper.map(carrier, CarrierDTO.class);
         return carrierDTO;
     }
@@ -29,7 +29,7 @@ public class CarrierMapper {
         return carrierPage.stream().map(carrier -> convertToDto(carrier)).collect(Collectors.toSet());
     }
 
-    private Carrier convertToEntity(CarrierDTO carrierDTO) {
+    public Carrier convertToEntity(CarrierDTO carrierDTO) {
         Carrier carrier = modelMapper.map(carrierDTO, Carrier.class);
         return carrier;
     }
