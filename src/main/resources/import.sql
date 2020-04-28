@@ -13,20 +13,22 @@ INSERT INTO business_partner VALUES (2, 'Terazije 2', 'BUYER', '2020-02-12', FAL
 INSERT INTO business_partner VALUES (3, 'Sumadijska 22', 'BUYER_AND_SUPPLIER', '2020-02-03', FALSE, 'Stefan','2424242', 3, 3);
 INSERT INTO business_partner VALUES (4, 'Licka 6', 'BUYER', '2020-04-01', FALSE, 'Marica', '8282828', 4, 4);
 
+INSERT INTO business_year VALUES (1, '2021-04-03', FALSE, '2020-04-03', '2020', 1);
+INSERT INTO business_year VALUES (2, '2021-04-02', FALSE, '2020-04-02', '2020', 2);
+INSERT INTO business_year VALUES (3, '2021-04-01', FALSE, '2020-04-01', '2020', 3);
+INSERT INTO business_year VALUES (4, '2021-04-04', FALSE, '2020-04-04', '2020', 4);
 
--- INSERT INTO 'business_year' ('business_year_id', 'end_date', 'finished', 'start_date', 'year', 'company_id')
---                                 VALUES (1, '2021-04-03', FALSE, '2020-04-03', '2020', 1);
--- INSERT INTO 'business_year' ('business_year_id', 'end_date', 'finished', 'start_date', 'year', 'company_id')
---                                 VALUES (2, '2021-04-02', FALSE, '2020-04-02', '2020', 2);
--- INSERT INTO 'business_year' ('business_year_id', 'end_date', 'finished', 'start_date', 'year', 'company_id')
---                                 VALUES (3, '2021-04-01', FALSE, '2020-04-01', '2020', 3);
--- INSERT INTO 'business_year' ('business_year_id', 'end_date', 'finished', 'start_date', 'year', 'company_id')
---                                 VALUES (4, '2021-04-04', FALSE, '2020-04-04', '2020', 4);
---
--- INSERT INTO 'carriers' ('carrier_id', 'deleted', 'name') VALUES (1, FALSE, 'Bex');
--- INSERT INTO 'carriers' ('carrier_id', 'deleted', 'name') VALUES (2, FALSE, 'D Express');
--- INSERT INTO 'carriers' ('carrier_id', 'deleted', 'name') VALUES (3, FALSE, 'AKS');
--- INSERT INTO 'carriers' ('carrier_id', 'deleted', 'name') VALUES (4, FALSE, 'Post Express');
+INSERT INTO carriers VALUES (1, FALSE, 'Bex');
+INSERT INTO carriers VALUES (2, FALSE, 'D Express');
+INSERT INTO carriers VALUES (3, FALSE, 'AKS');
+INSERT INTO carriers VALUES (4, FALSE, 'Post Express');
+
+INSERT INTO users VALUES (1, FALSE, '$10$98JlHkuUTBSD8T4LJm6ZYuj8qls5QXCl39MasMUaojMWiSWIsjKN2', 'ADMIN', '1', 1);
+INSERT INTO users VALUES (2, FALSE, '$10$Mo9d058uPWYq9F2u27NIT.ESnlhLEBOU8FBYzKtFP9olt6rQr7ep2', 'ADMIN', '2', 2);
+INSERT INTO users VALUES (3, FALSE, '$10$aKcC95Bk8VMnlrMYkY0R.OAROiesUCdQ3/NzVqAz2fXe1GZ9MUknG', 'USER', '3', 3);
+INSERT INTO users VALUES (4, FALSE, '$2a$10$VONABH7lVE7IIi7l3a9kKeetbzDftLieifQlxbPBNOo35EgzkJZgi', 'USER', '4', 4);
+
+
 --
 --
 --
@@ -71,14 +73,7 @@ INSERT INTO business_partner VALUES (4, 'Licka 6', 'BUYER', '2020-04-01', FALSE,
 --                                 'business_partner_id', 'companies', 'invoice_id', 'user_id')
 --                                 VALUES ();
 --
--- INSERT INTO 'users' ('user_id', 'deleted', 'password', 'role', 'username', 'company_id')
---                                 VALUES (1, FALSE, '1', 'ADMIN', '1', 1);
--- INSERT INTO 'users' ('user_id', 'deleted', 'password', 'role', 'username', 'company_id')
---                                 VALUES (2, FALSE, '2', 'ADMIN', '2', 2);
--- INSERT INTO 'users' ('user_id', 'deleted', 'password', 'role', 'username', 'company_id')
---                                 VALUES (3, FALSE, '3', 'USER', '3', 3);
--- INSERT INTO 'users' ('user_id', 'deleted', 'password', 'role', 'username', 'company_id')
---                                 VALUES (4, FALSE , '4', 'USER', '4', 4);
+
 --
 -- INSERT INTO 'vat' ('vat_id', 'deleted', 'name')
 --                                 VALUES ();
